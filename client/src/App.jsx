@@ -18,8 +18,6 @@ const App = () => {
   const isDrawing = useRef(false);
 
 
-
-  // Returns the right line array
   const getCurrentLines = () => {
     if (myPart === "head") return headLine;
     if (myPart === "torso") return torsoLine;
@@ -34,7 +32,7 @@ const setCurrentLines = (newLines) => {
 };
 
   useEffect(() => {
-    ws.current = new WebSocket("ws://localhost:3001");
+    ws.current = new WebSocket("wss://exquisitecorpse.onrender.com");
 
     ws.current.onopen = () => {
       console.log("WebSocket connected");
@@ -87,7 +85,7 @@ const setCurrentLines = (newLines) => {
       points: [...l.points]
     }));
 
-    // Add points immutably
+
     newLines[newLines.length - 1].points.push(point.x, point.y);
     setCurrentLines(newLines);
 
@@ -117,7 +115,7 @@ const setCurrentLines = (newLines) => {
   style={{
       width: "360px",        
          height: "210px",
-    position: "relative",     // allow absolute positioning
+    position: "relative",    
     display: "flex",
     justifyContent: "center",
     alignItems: "center"
@@ -125,7 +123,7 @@ const setCurrentLines = (newLines) => {
 >
       <div style={{
     position: "absolute",
-    top: "30px",   // was 50px, now raised 10px
+    top: "30px",   
     left: "30px",
     width: "300px",
     height: "150px",
@@ -183,7 +181,7 @@ const setCurrentLines = (newLines) => {
 >
       <div style={{
     position: "absolute",
-    top: "30px",   // was 50px, now raised 10px
+    top: "30px",   
     left: "30px",
     width: "300px",
     height: "150px",
@@ -222,7 +220,7 @@ const setCurrentLines = (newLines) => {
         position: "absolute",
       width: "360px",        
          height: "210px",
-        pointerEvents: "none", // allow drawing underneath
+        pointerEvents: "none", 
       }}
     />
   </div>
@@ -231,7 +229,7 @@ const setCurrentLines = (newLines) => {
   style={{
       width: "360px",        
          height: "210px",
-    position: "relative",     // allow absolute positioning
+    position: "relative",    
     display: "flex",
     justifyContent: "center",
     alignItems: "center"
@@ -278,7 +276,7 @@ const setCurrentLines = (newLines) => {
         position: "absolute",
       width: "360px",        
          height: "210px",
-        pointerEvents: "none", // allow drawing underneath
+        pointerEvents: "none", 
       }}
     />
   </div>
